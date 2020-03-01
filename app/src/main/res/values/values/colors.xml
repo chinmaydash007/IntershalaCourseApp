@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#badc57</color>
+    <color name="colorPrimaryDark">#E44236</color>
+    <color name="colorAccent">#E74292</color>
+
+    <color name="popup_menu_textcolor">#F4C724</color>
+    <color name="popup_menu_background_color">#BB2CD9</color>
+
+    <color name="textcolorprimary">#EAF0F1</color>
+    <color name="toolbartitlecolor">#EA7773</color>
+    <color name="navigationiconcolor">#00CCCD</color>
+    <color name="overflowmenucolor">#F5BCBA</color>
+</resources>
