@@ -9,9 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentManager
-import com.example.intershalacourseapp.R
 import com.example.intershalatrainingapp.ChatFragment
-import com.example.intershalatrainingapp.MessageFragment
+import com.example.intershalatrainingapp.DashBoardFragment
 import com.example.intershalatrainingapp.Profile_Fragment
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -54,7 +53,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun openMessageFragment() {
-        var messageFragment = MessageFragment()
+        var messageFragment = DashBoardFragment()
         var fragmentManager: FragmentManager = supportFragmentManager
         fragmentManager.beginTransaction()
             .replace(R.id.fragment_container, messageFragment, "MessageFragment")
@@ -68,7 +67,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val frag = supportFragmentManager.findFragmentById(R.id.fragment_container)
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)
-        } else if (frag !is MessageFragment) {
+        } else if (frag !is DashBoardFragment) {
             openMessageFragment()
         } else {
             super.onBackPressed()
@@ -93,7 +92,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.nav_message -> {
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, MessageFragment(), "Message Fragment")
+                    .replace(R.id.fragment_container, DashBoardFragment(), "Message Fragment")
                     .commit()
                 supportActionBar?.setTitle("Message Fragment")
 
