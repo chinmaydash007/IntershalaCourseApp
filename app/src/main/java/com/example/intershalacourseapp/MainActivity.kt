@@ -11,11 +11,12 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentManager
 import com.example.intershalatrainingapp.ChatFragment
 import com.example.intershalatrainingapp.DashBoardFragment
+import com.example.intershalatrainingapp.ErrorCallBack
 import com.example.intershalatrainingapp.Profile_Fragment
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,ErrorCallBack {
     lateinit var drawerLayout: DrawerLayout
     lateinit var navigationView: NavigationView
     lateinit var toolbar: androidx.appcompat.widget.Toolbar
@@ -92,9 +93,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.nav_message -> {
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, DashBoardFragment(), "Message Fragment")
+                    .replace(R.id.fragment_container, DashBoardFragment(), "Book Fragment")
                     .commit()
-                supportActionBar?.setTitle("Message Fragment")
+                supportActionBar?.setTitle("Books")
 
             }
             R.id.nav_profile -> {
@@ -109,6 +110,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    override fun OnButtonClick() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, DashBoardFragment(), "Book Fragment")
+            .commit()
+        supportActionBar?.setTitle("Books")
     }
 
 
