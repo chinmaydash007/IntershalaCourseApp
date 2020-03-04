@@ -6,5 +6,7 @@ data class Books(
     var name: String = "",
     var author: String = "",
     var rating: String = "",
-    var price:String="",
-    var image:String="")
+    var price: String = "",
+    var image: String = "",
+    var description: String = ""
+)

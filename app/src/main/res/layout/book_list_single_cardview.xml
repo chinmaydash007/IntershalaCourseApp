@@ -9,7 +9,8 @@
     android:clickable="true"
     android:elevation="8dp"
     android:foreground="@drawable/ripple_for_cardview"
-    app:cardCornerRadius="8dp">
+    app:cardCornerRadius="8dp"
+    android:id="@+id/book_cardview">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

@@ -1,11 +1,13 @@
 package com.example.intershalacourseapp.Adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.intershalacourseapp.BookDescription
 import com.example.intershalacourseapp.Model.Books
 import com.example.intershalacourseapp.R
 import kotlinx.android.synthetic.main.book_list_single_cardview.view.*
@@ -38,6 +40,12 @@ class BooksAdapter(var bookList: List<Books>, var context: Context) :
             holder.rating_image.setImageResource(R.drawable.ic_star_empty)
         }
 
+        holder.book_cardview.setOnClickListener {
+            var intent = Intent(context, BookDescription::class.java)
+            intent.putExtra("bookId",book.book_id)
+            context.startActivity(intent)
+        }
+
     }
 
     inner class BookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -47,5 +55,6 @@ class BooksAdapter(var bookList: List<Books>, var context: Context) :
         var price = itemView.price
         var image = itemView.book_image
         var rating_image = itemView.rate_imageView
+        var book_cardview = itemView.book_cardview
     }
 }

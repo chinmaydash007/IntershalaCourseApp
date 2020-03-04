@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.intershalacourseapp.Adapters.BooksAdapter
@@ -48,15 +49,25 @@ class DashBoardFragment : Fragment() {
 
         bookList = ArrayList()
         recyclerView = view.book_recylerview
-        recyclerView.layoutManager = LinearLayoutManager(activity as Context)
+        var linearLayoutManager: RecyclerView.LayoutManager =
+            LinearLayoutManager(activity as Context)
+        recyclerView.layoutManager = linearLayoutManager
         booksAdapter = BooksAdapter(bookList, activity as Context)
         recyclerView.adapter = booksAdapter
+
+        recyclerView.addItemDecoration(
+            DividerItemDecoration(
+                recyclerView.context,
+                (linearLayoutManager as LinearLayoutManager).orientation
+            )
+        )
 
 
         var bookService: BookService = ServiceBuilder.buildService(BookService::class.java)
         var requestCall: Call<BookRESTmodel> = bookService.getBookList()
 
         if (ConnectionManager().checkConnection(activity as Context)) {
+            view.progressBarLayout.visibility = View.GONE
             requestCall.enqueue(object : Callback<BookRESTmodel> {
 
                 override fun onResponse(
