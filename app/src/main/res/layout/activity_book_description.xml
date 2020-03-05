@@ -12,8 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/book_title"
-        app:layout_constraintStart_toStartOf="@+id/book_title"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/book_title" />
 
     <com.google.android.material.appbar.MaterialToolbar
@@ -39,13 +38,12 @@
         android:id="@+id/book_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="48dp"
         android:text="Title  "
         android:textColor="#000"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/book_image"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/materialToolbar" />
 
     <TextView
@@ -57,8 +55,7 @@
         android:textColor="#30B327"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/book_author"
-        app:layout_constraintStart_toStartOf="@+id/book_author"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/book_author" />
 
     <TextView
@@ -86,8 +83,10 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="0dp"
         android:layout_marginTop="16dp"
+        android:scrollbars="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -96,18 +95,42 @@
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
+            android:id="@+id/book_description"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="18dp"
+            android:elevation="2dp"
+            android:scrollbars="vertical"
             android:text="Description"
             android:textColor="#000"
-            android:id="@+id/book_description"/>
+            android:textSize="22sp" />
 
     </androidx.core.widget.NestedScrollView>
+
     <RelativeLayout
         android:id="@+id/progressBarLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:visibility="invisible" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="136dp" />
+
+    <Button
+        android:id="@+id/button2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#fff"/>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Add to favorite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
